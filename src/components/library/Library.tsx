@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import AppLayout from '../layout/AppLayout';
 import { Dumbbell, Heart, Calendar, Activity, Plus } from 'lucide-react';
 
 export default function Library() {
@@ -49,7 +48,7 @@ export default function Library() {
   ];
 
   return (
-    <AppLayout>
+    <>
       <div className="mb-6">
         <h1 className="text-3xl mb-4">Library</h1>
       </div>
@@ -84,7 +83,7 @@ export default function Library() {
                   <Plus className="w-5 h-5" />
                 </button>
               </div>
-              
+
               <div className="border-t border-gray-100 pt-4">
                 <p className="text-xs text-gray-400 mb-1">Recently used</p>
                 <p className="text-sm text-gray-700">{section.recent}</p>
@@ -93,6 +92,6 @@ export default function Library() {
           );
         })}
       </div>
-    </AppLayout>
+    </>
   );
 }

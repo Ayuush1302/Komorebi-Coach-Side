@@ -1,5 +1,6 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import AppLayout from './components/layout/AppLayout';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { DataProvider } from './context/DataContext';
 import { ChatProvider } from './context/ChatContext';
@@ -65,44 +66,46 @@ function App() {
                   <Route path="/onboarding/profile" element={<PrivateRoute><OnboardingProfile /></PrivateRoute>} />
                   <Route path="/welcome" element={<PrivateRoute><Welcome /></PrivateRoute>} />
 
-                  {/* Main Bottom Nav Routes */}
-                  <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-                  <Route path="/activity" element={<PrivateRoute><Feed /></PrivateRoute>} />
-                  <Route path="/library" element={<PrivateRoute><Library /></PrivateRoute>} />
-                  <Route path="/library/exercises" element={<PrivateRoute><ExerciseLibrary /></PrivateRoute>} />
-                  <Route path="/library/workouts" element={<PrivateRoute><WorkoutLibrary /></PrivateRoute>} />
-                  <Route path="/library/cardio" element={<PrivateRoute><CardioLibrary /></PrivateRoute>} />
-                  <Route path="/library/plans" element={<PrivateRoute><PlanLibrary /></PrivateRoute>} />
+                  {/* Main App Routes with Global Layout */}
+                  <Route element={<PrivateRoute><AppLayout><Outlet /></AppLayout></PrivateRoute>}>
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/activity" element={<Feed />} />
+                    <Route path="/library" element={<Library />} />
+                    <Route path="/library/exercises" element={<ExerciseLibrary />} />
+                    <Route path="/library/workouts" element={<WorkoutLibrary />} />
+                    <Route path="/library/cardio" element={<CardioLibrary />} />
+                    <Route path="/library/plans" element={<PlanLibrary />} />
 
-                  <Route path="/athletes" element={<PrivateRoute><Athletes /></PrivateRoute>} />
-                  <Route path="/athletes/:athleteId/dashboard" element={<PrivateRoute><AthleteDashboard /></PrivateRoute>} />
+                    <Route path="/athletes" element={<Athletes />} />
+                    <Route path="/athletes/:athleteId/dashboard" element={<AthleteDashboard />} />
 
-                  <Route path="/create/exercise" element={<PrivateRoute><CreateExercise /></PrivateRoute>} />
-                  <Route path="/create/workout" element={<PrivateRoute><WorkoutBuilder /></PrivateRoute>} />
-                  <Route path="/create/cardio" element={<PrivateRoute><CardioSession /></PrivateRoute>} />
-                  <Route path="/create/plan" element={<PrivateRoute><PlanBuilder /></PrivateRoute>} />
-                  <Route path="/create-post" element={<PrivateRoute><CreatePost /></PrivateRoute>} />
+                    <Route path="/create/exercise" element={<CreateExercise />} />
+                    <Route path="/create/workout" element={<WorkoutBuilder />} />
+                    <Route path="/create/cardio" element={<CardioSession />} />
+                    <Route path="/create/plan" element={<PlanBuilder />} />
+                    <Route path="/create-post" element={<CreatePost />} />
 
-                  <Route path="/calendar" element={<PrivateRoute><Calendar /></PrivateRoute>} />
-                  <Route path="/support" element={<PrivateRoute><Support /></PrivateRoute>} />
+                    <Route path="/calendar" element={<Calendar />} />
+                    <Route path="/support" element={<Support />} />
 
-                  <Route path="/analytics" element={<PrivateRoute><Analytics /></PrivateRoute>} />
+                    <Route path="/analytics" element={<Analytics />} />
 
-                  <Route path="/profile" element={<PrivateRoute><ProfileTab /></PrivateRoute>} />
-                  <Route path="/profile/settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
-                  <Route path="/profile/notifications" element={<PrivateRoute><Settings /></PrivateRoute>} />
-                  <Route path="/profile/privacy" element={<PrivateRoute><Settings /></PrivateRoute>} />
-                  <Route path="/profile/language" element={<PrivateRoute><Settings /></PrivateRoute>} />
-                  <Route path="/profile/appearance" element={<PrivateRoute><Settings /></PrivateRoute>} />
-                  <Route path="/chats" element={<PrivateRoute><Chats /></PrivateRoute>} />
-                  <Route path="/chats/:chatId" element={<PrivateRoute><ChatDetail /></PrivateRoute>} />
-                  <Route path="/settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
+                    <Route path="/profile" element={<ProfileTab />} />
+                    <Route path="/profile/settings" element={<Settings />} />
+                    <Route path="/profile/notifications" element={<Settings />} />
+                    <Route path="/profile/privacy" element={<Settings />} />
+                    <Route path="/profile/language" element={<Settings />} />
+                    <Route path="/profile/appearance" element={<Settings />} />
+                    <Route path="/chats" element={<Chats />} />
+                    <Route path="/chats/:chatId" element={<ChatDetail />} />
+                    <Route path="/settings" element={<Settings />} />
 
-                  {/* Detail/Edit Routes */}
-                  <Route path="/workouts/:id" element={<PrivateRoute><WorkoutBuilder /></PrivateRoute>} />
-                  <Route path="/cardio/:id" element={<PrivateRoute><CardioSession /></PrivateRoute>} />
-                  <Route path="/exercises/edit/:id" element={<PrivateRoute><CreateExercise /></PrivateRoute>} />
-                  <Route path="/plans/:id" element={<PrivateRoute><PlanBuilder /></PrivateRoute>} />
+                    {/* Detail/Edit Routes */}
+                    <Route path="/workouts/:id" element={<WorkoutBuilder />} />
+                    <Route path="/cardio/:id" element={<CardioSession />} />
+                    <Route path="/exercises/edit/:id" element={<CreateExercise />} />
+                    <Route path="/plans/:id" element={<PlanBuilder />} />
+                  </Route>
 
                   {/* Redirects */}
                   <Route path="/exercises" element={<Navigate to="/library/exercises" replace />} />

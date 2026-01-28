@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../../context/DataContext';
-import Layout from '../layout/Layout';
+
 import ExerciseDetailModal from './ExerciseDetailModal';
 import WorkoutSelectionSheet from './WorkoutSelectionSheet';
 import { Plus, Search, Filter, Edit } from 'lucide-react';
@@ -37,7 +37,7 @@ export default function Exercises({ embedded = false }: ExercisesProps) {
     const categoryValue = activeTab === 'custom' ? customCategoryFilter : categoryFilter;
     const muscleValue = activeTab === 'custom' ? customMuscleFilter : muscleFilter;
     const typeValue = activeTab === 'custom' ? customTypeFilter : typeFilter;
-    
+
     const matchesSearch = ex.name.toLowerCase().includes(searchValue.toLowerCase());
     const matchesCategory = !categoryValue || categoryValue === 'All' || ex.category === categoryValue;
     const matchesMuscle = !muscleValue || muscleValue === 'All' || ex.primaryMuscle === muscleValue;
@@ -65,21 +65,19 @@ export default function Exercises({ embedded = false }: ExercisesProps) {
             <div className="flex">
               <button
                 onClick={() => setActiveTab('custom')}
-                className={`px-6 py-3 text-sm transition-colors ${
-                  activeTab === 'custom'
-                    ? 'border-b-2 border-blue-600 text-blue-600'
-                    : 'text-gray-600 hover:text-gray-800'
-                }`}
+                className={`px-6 py-3 text-sm transition-colors ${activeTab === 'custom'
+                  ? 'border-b-2 border-blue-600 text-blue-600'
+                  : 'text-gray-600 hover:text-gray-800'
+                  }`}
               >
                 Custom Exercises
               </button>
               <button
                 onClick={() => setActiveTab('exercises')}
-                className={`px-6 py-3 text-sm transition-colors ${
-                  activeTab === 'exercises'
-                    ? 'border-b-2 border-blue-600 text-blue-600'
-                    : 'text-gray-600 hover:text-gray-800'
-                }`}
+                className={`px-6 py-3 text-sm transition-colors ${activeTab === 'exercises'
+                  ? 'border-b-2 border-blue-600 text-blue-600'
+                  : 'text-gray-600 hover:text-gray-800'
+                  }`}
               >
                 Exercise Library
               </button>
@@ -307,5 +305,5 @@ export default function Exercises({ embedded = false }: ExercisesProps) {
     </>
   );
 
-  return embedded ? content : <Layout>{content}</Layout>;
+  return content;
 }

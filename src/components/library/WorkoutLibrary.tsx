@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import AppLayout from '../layout/AppLayout';
+
 import { useData } from '../../context/DataContext';
 import { ArrowLeft, Plus, Clock, Dumbbell } from 'lucide-react';
 
@@ -39,7 +39,7 @@ export default function WorkoutLibrary() {
   const displayWorkouts = activeTab === 'templates' ? mockTemplates : workouts;
 
   return (
-    <AppLayout>
+    <>
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
         <button
@@ -61,21 +61,19 @@ export default function WorkoutLibrary() {
       <div className="inline-flex bg-gray-100 rounded-lg p-1 mb-6">
         <button
           onClick={() => setActiveTab('templates')}
-          className={`px-6 py-2 rounded-md text-sm transition-colors ${
-            activeTab === 'templates'
-              ? 'bg-white shadow-sm'
-              : 'text-gray-600'
-          }`}
+          className={`px-6 py-2 rounded-md text-sm transition-colors ${activeTab === 'templates'
+            ? 'bg-white shadow-sm'
+            : 'text-gray-600'
+            }`}
         >
           📘 Templates
         </button>
         <button
           onClick={() => setActiveTab('custom')}
-          className={`px-6 py-2 rounded-md text-sm transition-colors ${
-            activeTab === 'custom'
-              ? 'bg-white shadow-sm'
-              : 'text-gray-600'
-          }`}
+          className={`px-6 py-2 rounded-md text-sm transition-colors ${activeTab === 'custom'
+            ? 'bg-white shadow-sm'
+            : 'text-gray-600'
+            }`}
         >
           ⭐ My Custom
         </button>
@@ -119,7 +117,7 @@ export default function WorkoutLibrary() {
                 </span>
               )}
             </div>
-            
+
             <div className="flex items-center gap-4 text-sm text-gray-500">
               <div className="flex items-center gap-1">
                 <Dumbbell className="w-4 h-4" />
@@ -145,6 +143,6 @@ export default function WorkoutLibrary() {
           </button>
         </div>
       )}
-    </AppLayout>
+    </>
   );
 }

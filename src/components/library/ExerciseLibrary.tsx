@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import AppLayout from '../layout/AppLayout';
+
 import { useData } from '../../context/DataContext';
 import { Search, Filter, ArrowLeft, Plus } from 'lucide-react';
 
@@ -26,12 +26,12 @@ export default function ExerciseLibrary() {
 
   const filteredExercises = searchQuery
     ? displayExercises.filter(ex =>
-        ex.name.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+      ex.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
     : null;
 
   return (
-    <AppLayout>
+    <>
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
         <button
@@ -53,21 +53,19 @@ export default function ExerciseLibrary() {
       <div className="inline-flex bg-gray-100 rounded-lg p-1 mb-6">
         <button
           onClick={() => setActiveTab('templates')}
-          className={`px-6 py-2 rounded-md text-sm transition-colors ${
-            activeTab === 'templates'
-              ? 'bg-white shadow-sm'
-              : 'text-gray-600'
-          }`}
+          className={`px-6 py-2 rounded-md text-sm transition-colors ${activeTab === 'templates'
+            ? 'bg-white shadow-sm'
+            : 'text-gray-600'
+            }`}
         >
           📘 Templates
         </button>
         <button
           onClick={() => setActiveTab('custom')}
-          className={`px-6 py-2 rounded-md text-sm transition-colors ${
-            activeTab === 'custom'
-              ? 'bg-white shadow-sm'
-              : 'text-gray-600'
-          }`}
+          className={`px-6 py-2 rounded-md text-sm transition-colors ${activeTab === 'custom'
+            ? 'bg-white shadow-sm'
+            : 'text-gray-600'
+            }`}
         >
           ⭐ My Custom
         </button>
@@ -156,6 +154,6 @@ export default function ExerciseLibrary() {
           </button>
         </div>
       )}
-    </AppLayout>
+    </>
   );
 }

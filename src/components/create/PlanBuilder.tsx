@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AppLayout from '../layout/AppLayout';
+
 import { ArrowLeft, Copy, Trash2, Plus, ChevronRight, Upload, X } from 'lucide-react';
 import WorkoutSelectionModal from './WorkoutSelectionModal';
 import { usePlans } from '../../context/PlansContext';
@@ -24,10 +24,10 @@ interface Week {
 export default function PlanBuilder() {
   const navigate = useNavigate();
   const { addCustomPlan } = usePlans();
-  
+
   // Step management
   const [currentStep, setCurrentStep] = useState(1);
-  
+
   // Step 1: Basic Info
   const [planName, setPlanName] = useState('');
   const [description, setDescription] = useState('');
@@ -36,13 +36,13 @@ export default function PlanBuilder() {
   const [duration, setDuration] = useState(8);
   const [daysPerWeek, setDaysPerWeek] = useState(4);
   const [athleteType, setAthleteType] = useState('');
-  
+
   // Step 2: Structure
   const [currentWeekIndex, setCurrentWeekIndex] = useState(0);
   const [showWorkoutModal, setShowWorkoutModal] = useState(false);
   const [selectedDay, setSelectedDay] = useState<DayWorkout | null>(null);
   const [selectedWeekIndex, setSelectedWeekIndex] = useState<number>(0);
-  
+
   const [weeks, setWeeks] = useState<Week[]>([
     {
       weekNumber: 1,
@@ -111,7 +111,7 @@ export default function PlanBuilder() {
   const handleRemoveWorkout = (weekIndex: number, dayId: string) => {
     const updatedWeeks = [...weeks];
     const dayIndex = updatedWeeks[weekIndex].days.findIndex(d => d.id === dayId);
-    
+
     updatedWeeks[weekIndex].days[dayIndex] = {
       ...updatedWeeks[weekIndex].days[dayIndex],
       workoutId: undefined,
@@ -128,7 +128,7 @@ export default function PlanBuilder() {
   const handleSetRestDay = (weekIndex: number, dayId: string) => {
     const updatedWeeks = [...weeks];
     const dayIndex = updatedWeeks[weekIndex].days.findIndex(d => d.id === dayId);
-    
+
     updatedWeeks[weekIndex].days[dayIndex] = {
       ...updatedWeeks[weekIndex].days[dayIndex],
       workoutId: undefined,
@@ -161,7 +161,7 @@ export default function PlanBuilder() {
     }
 
     const updatedWeeks = weeks.filter((_, idx) => idx !== weekIndex);
-    
+
     // Renumber the remaining weeks
     const renumberedWeeks = updatedWeeks.map((week, idx) => ({
       ...week,
@@ -219,7 +219,7 @@ export default function PlanBuilder() {
   };
 
   return (
-    <AppLayout>
+    <>
       <div className="min-h-screen bg-[#F8F9FA] pb-20">
         {/* Header */}
         <div className="bg-white border-b border-[#E5E7EB] px-5 py-4">
@@ -240,11 +240,10 @@ export default function PlanBuilder() {
               <div key={step} className="flex items-center flex-1">
                 <div className="flex flex-col items-center flex-1">
                   <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
-                      step <= currentStep
-                        ? 'bg-[#3B82F6] text-white'
-                        : 'bg-gray-200 text-gray-500'
-                    }`}
+                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${step <= currentStep
+                      ? 'bg-[#3B82F6] text-white'
+                      : 'bg-gray-200 text-gray-500'
+                      }`}
                   >
                     {step}
                   </div>
@@ -609,6 +608,6 @@ export default function PlanBuilder() {
           onSelectWorkout={handleWorkoutSelected}
         />
       )}
-    </AppLayout>
+    </>
   );
 }

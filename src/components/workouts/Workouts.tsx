@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useData, mockTemplates } from '../../context/DataContext';
-import Layout from '../layout/Layout';
+
 import { Plus, MoreVertical, Copy, Trash2, Edit, Eye, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface WorkoutsProps {
@@ -57,21 +57,19 @@ export default function Workouts({ embedded = false }: WorkoutsProps) {
           <div className="flex">
             <button
               onClick={() => setActiveTab('workouts')}
-              className={`px-6 py-3 text-sm transition-colors ${
-                activeTab === 'workouts'
-                  ? 'border-b-2 border-blue-600 text-blue-600'
-                  : 'text-gray-600 hover:text-gray-800'
-              }`}
+              className={`px-6 py-3 text-sm transition-colors ${activeTab === 'workouts'
+                ? 'border-b-2 border-blue-600 text-blue-600'
+                : 'text-gray-600 hover:text-gray-800'
+                }`}
             >
               Custom Workouts
             </button>
             <button
               onClick={() => setActiveTab('templates')}
-              className={`px-6 py-3 text-sm transition-colors ${
-                activeTab === 'templates'
-                  ? 'border-b-2 border-blue-600 text-blue-600'
-                  : 'text-gray-600 hover:text-gray-800'
-              }`}
+              className={`px-6 py-3 text-sm transition-colors ${activeTab === 'templates'
+                ? 'border-b-2 border-blue-600 text-blue-600'
+                : 'text-gray-600 hover:text-gray-800'
+                }`}
             >
               Templates
             </button>
@@ -96,8 +94,8 @@ export default function Workouts({ embedded = false }: WorkoutsProps) {
                   const isExpanded = expandedDescriptions.has(workout.id);
                   const descriptionLength = workout.description.length;
                   const shouldTruncate = descriptionLength > 60;
-                  const displayDescription = isExpanded || !shouldTruncate 
-                    ? workout.description 
+                  const displayDescription = isExpanded || !shouldTruncate
+                    ? workout.description
                     : workout.description.slice(0, 60) + '...';
 
                   return (
@@ -186,8 +184,8 @@ export default function Workouts({ embedded = false }: WorkoutsProps) {
                 const isExpanded = expandedDescriptions.has(template.id);
                 const descriptionLength = template.description.length;
                 const shouldTruncate = descriptionLength > 60;
-                const displayDescription = isExpanded || !shouldTruncate 
-                  ? template.description 
+                const displayDescription = isExpanded || !shouldTruncate
+                  ? template.description
                   : template.description.slice(0, 60) + '...';
 
                 return (
@@ -256,5 +254,5 @@ export default function Workouts({ embedded = false }: WorkoutsProps) {
     </div>
   );
 
-  return embedded ? content : <Layout>{content}</Layout>;
+  return content;
 }

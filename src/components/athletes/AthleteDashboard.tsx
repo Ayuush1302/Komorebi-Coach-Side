@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useData } from '../../context/DataContext';
-import Layout from '../layout/Layout';
+
 import { ArrowLeft, Mail, Calendar as CalendarIcon, Activity, Dumbbell, TrendingUp, Clock, Zap, List, Plus, Loader2, Pencil } from 'lucide-react';
 import { useState } from 'react';
 import { usePlans } from '../../context/PlansContext';
@@ -86,7 +86,7 @@ export default function AthleteDashboard() {
 
     if (!athlete) {
         return (
-            <Layout>
+            <>
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center py-16">
                         <p className="text-gray-500">Athlete not found</p>
@@ -98,7 +98,7 @@ export default function AthleteDashboard() {
                         </button>
                     </div>
                 </div>
-            </Layout>
+            </>
         );
     }
 
@@ -135,7 +135,7 @@ export default function AthleteDashboard() {
     ];
 
     return (
-        <Layout>
+        <>
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="flex items-center gap-4 mb-6">
@@ -507,6 +507,6 @@ export default function AthleteDashboard() {
                     </div>
                 </DialogContent>
             </Dialog>
-        </Layout >
+        </>
     );
 }

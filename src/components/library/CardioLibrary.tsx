@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import AppLayout from '../layout/AppLayout';
+
 import { ArrowLeft, Plus, Clock, Activity, TrendingUp } from 'lucide-react';
 
 interface CardioSession {
@@ -128,7 +128,7 @@ export default function CardioLibrary() {
   };
 
   return (
-    <AppLayout>
+    <>
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
         <button
@@ -150,21 +150,19 @@ export default function CardioLibrary() {
       <div className="inline-flex bg-gray-100 rounded-lg p-1 mb-6">
         <button
           onClick={() => setActiveTab('templates')}
-          className={`px-6 py-2 rounded-md text-sm transition-colors ${
-            activeTab === 'templates'
-              ? 'bg-white shadow-sm'
-              : 'text-gray-600'
-          }`}
+          className={`px-6 py-2 rounded-md text-sm transition-colors ${activeTab === 'templates'
+            ? 'bg-white shadow-sm'
+            : 'text-gray-600'
+            }`}
         >
           📘 Templates
         </button>
         <button
           onClick={() => setActiveTab('custom')}
-          className={`px-6 py-2 rounded-md text-sm transition-colors ${
-            activeTab === 'custom'
-              ? 'bg-white shadow-sm'
-              : 'text-gray-600'
-          }`}
+          className={`px-6 py-2 rounded-md text-sm transition-colors ${activeTab === 'custom'
+            ? 'bg-white shadow-sm'
+            : 'text-gray-600'
+            }`}
         >
           ⭐ My Custom
         </button>
@@ -218,7 +216,7 @@ export default function CardioLibrary() {
                   </span>
                 )}
               </div>
-              
+
               <div className="flex items-center gap-4 text-sm text-gray-500 mt-4">
                 <div className="flex items-center gap-1">
                   <span className="font-medium text-gray-700">{session.activityType}</span>
@@ -258,6 +256,6 @@ export default function CardioLibrary() {
           </button>
         </div>
       )}
-    </AppLayout>
+    </>
   );
 }

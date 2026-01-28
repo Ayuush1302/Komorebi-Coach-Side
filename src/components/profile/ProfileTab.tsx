@@ -1,7 +1,7 @@
-import AppLayout from '../layout/AppLayout';
+
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { User, Settings, Bell, Lock, Globe, Palette, LogOut } from 'lucide-react';
+import { User, Bell, Lock, Globe, Palette, LogOut } from 'lucide-react';
 
 export default function ProfileTab() {
   const { logout } = useAuth();
@@ -31,7 +31,7 @@ export default function ProfileTab() {
   ];
 
   return (
-    <AppLayout>
+    <div className="max-w-4xl mx-auto">
       <h1 className="text-3xl mb-6">Profile</h1>
 
       {/* Profile Header */}
@@ -80,6 +80,6 @@ export default function ProfileTab() {
         <LogOut className="w-5 h-5" />
         Log Out
       </button>
-    </AppLayout>
+    </div>
   );
 }

@@ -1,11 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, LayoutDashboard, MessageCircle, Users, Calendar } from 'lucide-react';
+import { LayoutDashboard, MessageCircle, Users, Calendar, Activity } from 'lucide-react';
 
 export default function BottomNav() {
   const location = useLocation();
 
   const navItems = [
     { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { path: '/activity', label: 'Activity', icon: Activity },
     { path: '/calendar', label: 'Calendar', icon: Calendar },
     { path: '/athletes', label: 'Athletes', icon: Users },
     { path: '/chats', label: 'Chat', icon: MessageCircle },

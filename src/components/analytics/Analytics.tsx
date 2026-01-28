@@ -1,4 +1,4 @@
-import AppLayout from '../layout/AppLayout';
+
 import { TrendingUp, Users, Heart, Award } from 'lucide-react';
 
 export default function Analytics() {
@@ -34,7 +34,7 @@ export default function Analytics() {
   ];
 
   return (
-    <AppLayout>
+    <div className="max-w-7xl mx-auto">
       <h1 className="text-3xl mb-6">Analytics</h1>
 
       {/* Stats Grid */}
@@ -97,6 +97,6 @@ export default function Analytics() {
           ))}
         </div>
       </div>
-    </AppLayout>
+    </div>
   );
 }

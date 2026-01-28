@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../../context/DataContext';
-import AppLayout from '../layout/AppLayout';
 import AddAthleteModal from './AddAthleteModal';
 import AthleteCard from './AthleteCard';
 import { Plus, Search, Filter, Users, UserCheck, UserX, Snowflake } from 'lucide-react';
@@ -18,7 +17,7 @@ export default function Athletes() {
   // Filter and sort athletes
   const filteredAthletes = athletes
     .filter(athlete => {
-      const matchesSearch = 
+      const matchesSearch =
         athlete.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
         (athlete.name && athlete.name.toLowerCase().includes(searchTerm.toLowerCase()));
       const matchesCategory = !categoryFilter || categoryFilter === 'All' || athlete.category === categoryFilter;
@@ -28,7 +27,7 @@ export default function Athletes() {
     .sort((a, b) => {
       const nameA = a.name || a.email;
       const nameB = b.name || b.email;
-      return sortOrder === 'A-Z' 
+      return sortOrder === 'A-Z'
         ? nameA.localeCompare(nameB)
         : nameB.localeCompare(nameA);
     });
@@ -57,7 +56,7 @@ export default function Athletes() {
   };
 
   return (
-    <AppLayout>
+    <>
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl">Athletes</h1>
@@ -74,11 +73,10 @@ export default function Athletes() {
         <div className="flex gap-4 mb-8 overflow-x-auto">
           <button
             onClick={() => setStatusFilter('Connected')}
-            className={`bg-white rounded-lg border-2 p-6 flex-1 min-w-[200px] text-left transition-all hover:shadow-md ${
-              statusFilter === 'Connected' 
-                ? 'border-green-500 ring-2 ring-green-200' 
-                : 'border-gray-200'
-            }`}
+            className={`bg-white rounded-lg border-2 p-6 flex-1 min-w-[200px] text-left transition-all hover:shadow-md ${statusFilter === 'Connected'
+              ? 'border-green-500 ring-2 ring-green-200'
+              : 'border-gray-200'
+              }`}
           >
             <div className="flex items-center justify-between">
               <div>
@@ -93,11 +91,10 @@ export default function Athletes() {
 
           <button
             onClick={() => setStatusFilter('Pending')}
-            className={`bg-white rounded-lg border-2 p-6 flex-1 min-w-[200px] text-left transition-all hover:shadow-md ${
-              statusFilter === 'Pending' 
-                ? 'border-amber-500 ring-2 ring-amber-200' 
-                : 'border-gray-200'
-            }`}
+            className={`bg-white rounded-lg border-2 p-6 flex-1 min-w-[200px] text-left transition-all hover:shadow-md ${statusFilter === 'Pending'
+              ? 'border-amber-500 ring-2 ring-amber-200'
+              : 'border-gray-200'
+              }`}
           >
             <div className="flex items-center justify-between">
               <div>
@@ -112,11 +109,10 @@ export default function Athletes() {
 
           <button
             onClick={() => setStatusFilter('Frozen')}
-            className={`bg-white rounded-lg border-2 p-6 flex-1 min-w-[200px] text-left transition-all hover:shadow-md ${
-              statusFilter === 'Frozen' 
-                ? 'border-blue-500 ring-2 ring-blue-200' 
-                : 'border-gray-200'
-            }`}
+            className={`bg-white rounded-lg border-2 p-6 flex-1 min-w-[200px] text-left transition-all hover:shadow-md ${statusFilter === 'Frozen'
+              ? 'border-blue-500 ring-2 ring-blue-200'
+              : 'border-gray-200'
+              }`}
           >
             <div className="flex items-center justify-between">
               <div>
@@ -211,6 +207,6 @@ export default function Athletes() {
       </div>
 
       {showAddModal && <AddAthleteModal onClose={() => setShowAddModal(false)} />}
-    </AppLayout>
+    </>
   );
 }

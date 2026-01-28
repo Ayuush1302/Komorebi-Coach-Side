@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import AppLayout from '../layout/AppLayout';
+
 import { ArrowLeft, Plus, Calendar, Dumbbell, Clock } from 'lucide-react';
 import { usePlans } from '../../context/PlansContext';
 
@@ -57,7 +57,7 @@ export default function PlanLibrary() {
   };
 
   return (
-    <AppLayout>
+    <>
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
         <button
@@ -168,6 +168,6 @@ export default function PlanLibrary() {
           </button>
         </div>
       )}
-    </AppLayout>
+    </>
   );
 }
