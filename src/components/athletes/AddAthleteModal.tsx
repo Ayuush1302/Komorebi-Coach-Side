@@ -9,12 +9,11 @@ interface AddAthleteModalProps {
 export default function AddAthleteModal({ onClose }: AddAthleteModalProps) {
   const [emailInput, setEmailInput] = useState('');
   const [emailTags, setEmailTags] = useState<string[]>([]);
-  const [category, setCategory] = useState<'Online' | 'In-Person' | 'Hybrid'>('Online');
   const { addAthletes } = useData();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    
+
     // Check if comma was entered
     if (value.includes(',')) {
       const emails = value.split(',').map(email => email.trim()).filter(email => email);
@@ -51,17 +50,17 @@ export default function AddAthleteModal({ onClose }: AddAthleteModalProps) {
 
   const handleSave = () => {
     if (emailTags.length > 0) {
-      addAthletes(emailTags, category);
+      addAthletes(emailTags, 'Online');
       onClose();
     }
   };
 
   return (
-    <div 
+    <div
       className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
       onClick={onClose}
     >
-      <div 
+      <div
         className="bg-white rounded-lg max-w-2xl w-full overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
@@ -113,43 +112,7 @@ export default function AddAthleteModal({ onClose }: AddAthleteModalProps) {
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm mb-2 text-gray-700">
-              Training Category
-            </label>
-            <div className="flex gap-3">
-              <button
-                onClick={() => setCategory('Online')}
-                className={`flex-1 px-4 py-2.5 border-2 rounded-md transition-colors ${
-                  category === 'Online'
-                    ? 'border-blue-600 bg-blue-50 text-blue-700'
-                    : 'border-gray-300 hover:border-gray-400'
-                }`}
-              >
-                Online
-              </button>
-              <button
-                onClick={() => setCategory('In-Person')}
-                className={`flex-1 px-4 py-2.5 border-2 rounded-md transition-colors ${
-                  category === 'In-Person'
-                    ? 'border-blue-600 bg-blue-50 text-blue-700'
-                    : 'border-gray-300 hover:border-gray-400'
-                }`}
-              >
-                In-Person
-              </button>
-              <button
-                onClick={() => setCategory('Hybrid')}
-                className={`flex-1 px-4 py-2.5 border-2 rounded-md transition-colors ${
-                  category === 'Hybrid'
-                    ? 'border-blue-600 bg-blue-50 text-blue-700'
-                    : 'border-gray-300 hover:border-gray-400'
-                }`}
-              >
-                Hybrid
-              </button>
-            </div>
-          </div>
+
 
           {emailTags.length > 0 && (
             <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
@@ -171,11 +134,10 @@ export default function AddAthleteModal({ onClose }: AddAthleteModalProps) {
           <button
             onClick={handleSave}
             disabled={emailTags.length === 0}
-            className={`px-6 py-2.5 rounded-md transition-colors ${
-              emailTags.length > 0
-                ? 'bg-blue-600 text-white hover:bg-blue-700'
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            }`}
+            className={`px-6 py-2.5 rounded-md transition-colors ${emailTags.length > 0
+              ? 'bg-blue-600 text-white hover:bg-blue-700'
+              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              }`}
           >
             Send Invitations
           </button>

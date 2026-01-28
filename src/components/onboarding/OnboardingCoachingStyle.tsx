@@ -16,7 +16,7 @@ export default function OnboardingCoachingStyle() {
   const [selectedSports, setSelectedSports] = useState<string[]>([]);
   const [selectedSpecializations, setSelectedSpecializations] = useState<string[]>([]);
   const [customSport, setCustomSport] = useState('');
-  const [workMode, setWorkMode] = useState('');
+
   const [experience, setExperience] = useState('');
   const [clientCount, setClientCount] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -60,11 +60,11 @@ export default function OnboardingCoachingStyle() {
     setSelectedSpecializations(prev => prev.filter(s => s !== spec));
   };
 
-  const canContinue = 
-    coachingStyle && 
+  const canContinue =
+    coachingStyle &&
     ((coachingStyle === 'sports' && selectedSports.length > 0) ||
-     (coachingStyle === 'strength' && selectedSpecializations.length > 0)) &&
-    workMode && experience && clientCount;
+      (coachingStyle === 'strength' && selectedSpecializations.length > 0)) &&
+    experience && clientCount;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -129,7 +129,7 @@ export default function OnboardingCoachingStyle() {
             {coachingStyle === 'sports' && (
               <div className="border-t pt-6">
                 <label className="block text-sm mb-4 text-gray-700">Which sport(s) do you coach?</label>
-                
+
                 <div className="relative mb-4">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <input
@@ -163,11 +163,10 @@ export default function OnboardingCoachingStyle() {
                           key={sport}
                           type="button"
                           onClick={() => toggleSport(sport)}
-                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
-                            selectedSports.includes(sport)
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
+                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${selectedSports.includes(sport)
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            }`}
                         >
                           {sport}
                         </button>
@@ -183,11 +182,10 @@ export default function OnboardingCoachingStyle() {
                           key={sport}
                           type="button"
                           onClick={() => toggleSport(sport)}
-                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
-                            selectedSports.includes(sport)
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
+                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${selectedSports.includes(sport)
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            }`}
                         >
                           {sport}
                         </button>
@@ -203,11 +201,10 @@ export default function OnboardingCoachingStyle() {
                           key={sport}
                           type="button"
                           onClick={() => toggleSport(sport)}
-                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
-                            selectedSports.includes(sport)
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
+                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${selectedSports.includes(sport)
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            }`}
                         >
                           {sport}
                         </button>
@@ -223,11 +220,10 @@ export default function OnboardingCoachingStyle() {
                           key={sport}
                           type="button"
                           onClick={() => toggleSport(sport)}
-                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
-                            selectedSports.includes(sport)
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
+                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${selectedSports.includes(sport)
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            }`}
                         >
                           {sport}
                         </button>
@@ -261,7 +257,7 @@ export default function OnboardingCoachingStyle() {
             {coachingStyle === 'strength' && (
               <div className="border-t pt-6">
                 <label className="block text-sm mb-4 text-gray-700">What type of training do you specialise in?</label>
-                
+
                 <div className="relative mb-4">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <input
@@ -295,11 +291,10 @@ export default function OnboardingCoachingStyle() {
                           key={spec}
                           type="button"
                           onClick={() => toggleSpecialization(spec)}
-                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
-                            selectedSpecializations.includes(spec)
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
+                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${selectedSpecializations.includes(spec)
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            }`}
                         >
                           {spec}
                         </button>
@@ -315,11 +310,10 @@ export default function OnboardingCoachingStyle() {
                           key={spec}
                           type="button"
                           onClick={() => toggleSpecialization(spec)}
-                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
-                            selectedSpecializations.includes(spec)
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
+                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${selectedSpecializations.includes(spec)
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            }`}
                         >
                           {spec}
                         </button>
@@ -335,11 +329,10 @@ export default function OnboardingCoachingStyle() {
                           key={spec}
                           type="button"
                           onClick={() => toggleSpecialization(spec)}
-                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
-                            selectedSpecializations.includes(spec)
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
+                          className={`px-3 py-1.5 rounded-md text-sm transition-colors ${selectedSpecializations.includes(spec)
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            }`}
                         >
                           {spec}
                         </button>
@@ -352,24 +345,7 @@ export default function OnboardingCoachingStyle() {
 
             {coachingStyle && (
               <>
-                <div className="border-t pt-6">
-                  <label className="block text-sm mb-3 text-gray-700">Do you work?</label>
-                  <div className="space-y-2">
-                    {['Online', 'In-person', 'Both'].map(mode => (
-                      <label key={mode} className="flex items-center gap-2 cursor-pointer">
-                        <input
-                          type="radio"
-                          name="workMode"
-                          value={mode.toLowerCase()}
-                          checked={workMode === mode.toLowerCase()}
-                          onChange={() => setWorkMode(mode.toLowerCase())}
-                          className="w-4 h-4"
-                        />
-                        <span className="text-sm">{mode}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
+
 
                 <div>
                   <label className="block text-sm mb-3 text-gray-700">Experience Level</label>
@@ -407,11 +383,10 @@ export default function OnboardingCoachingStyle() {
               <button
                 type="submit"
                 disabled={!canContinue}
-                className={`px-8 py-2.5 rounded-md transition-colors ${
-                  canContinue
-                    ? 'bg-blue-600 text-white hover:bg-blue-700'
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                }`}
+                className={`px-8 py-2.5 rounded-md transition-colors ${canContinue
+                  ? 'bg-blue-600 text-white hover:bg-blue-700'
+                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  }`}
               >
                 Continue
               </button>
