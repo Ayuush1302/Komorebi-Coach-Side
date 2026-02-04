@@ -14,6 +14,11 @@ import OnboardingCoachingStyle from './components/onboarding/OnboardingCoachingS
 import OnboardingCertifications from './components/onboarding/OnboardingCertifications';
 import OnboardingProfile from './components/onboarding/OnboardingProfile';
 import Welcome from './components/onboarding/Welcome';
+import AthleteProfile from './components/onboarding/athlete/AthleteProfile';
+import AthleteCoachingType from './components/onboarding/athlete/AthleteCoachingType';
+import AthleteExperience from './components/onboarding/athlete/AthleteExperience';
+import AthleteLogistics from './components/onboarding/athlete/AthleteLogistics';
+import AthleteHealth from './components/onboarding/athlete/AthleteHealth';
 
 // New Bottom Nav Structure
 import Library from './components/library/Library';
@@ -34,6 +39,12 @@ import CreatePost from './components/feed/CreatePost';
 import Feed from './components/feed/Feed';
 import { Toaster } from './components/ui/sonner';
 
+
+// Athlete Components
+import AthleteAppLayout from './components/layout/AthleteAppLayout';
+import AthleteHome from './components/athlete/AthleteHome';
+import AthleteAnalytics from './components/athlete/AthleteAnalytics';
+import AthleteProfileView from './components/athlete/AthleteProfileView';
 
 // Existing Components (reused)
 import Athletes from './components/athletes/Athletes';
@@ -65,6 +76,22 @@ function App() {
                   <Route path="/onboarding/certifications" element={<PrivateRoute><OnboardingCertifications /></PrivateRoute>} />
                   <Route path="/onboarding/profile" element={<PrivateRoute><OnboardingProfile /></PrivateRoute>} />
                   <Route path="/welcome" element={<PrivateRoute><Welcome /></PrivateRoute>} />
+
+                  {/* Athlete Onboarding Routes */}
+                  <Route path="/onboarding/athlete/profile" element={<PrivateRoute><AthleteProfile /></PrivateRoute>} />
+                  <Route path="/onboarding/athlete/coaching-type" element={<PrivateRoute><AthleteCoachingType /></PrivateRoute>} />
+                  <Route path="/onboarding/athlete/experience" element={<PrivateRoute><AthleteExperience /></PrivateRoute>} />
+                  <Route path="/onboarding/athlete/logistics" element={<PrivateRoute><AthleteLogistics /></PrivateRoute>} />
+                  <Route path="/onboarding/athlete/health" element={<PrivateRoute><AthleteHealth /></PrivateRoute>} />
+
+                  {/* Athlete Dashboard Routes */}
+                  <Route element={<PrivateRoute><AthleteAppLayout><Outlet /></AthleteAppLayout></PrivateRoute>}>
+                    <Route path="/athlete/home" element={<AthleteHome />} />
+                    <Route path="/athlete/analytics" element={<AthleteAnalytics />} />
+                    <Route path="/athlete/chats" element={<Chats />} />
+                    <Route path="/athlete/chats/:chatId" element={<ChatDetail />} />
+                    <Route path="/athlete/profile" element={<AthleteProfileView />} />
+                  </Route>
 
                   {/* Main App Routes with Global Layout */}
                   <Route element={<PrivateRoute><AppLayout><Outlet /></AppLayout></PrivateRoute>}>
