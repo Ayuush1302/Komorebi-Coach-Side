@@ -43,7 +43,6 @@ import { Toaster } from './components/ui/sonner';
 // Athlete Components
 import AthleteAppLayout from './components/layout/AthleteAppLayout';
 import AthleteHome from './components/athlete/AthleteHome';
-import AthleteCalendar from './components/athlete/AthleteCalendar';
 import AthletePlanDetail from './components/athlete/AthletePlanDetail';
 import AthleteAnalytics from './components/athlete/AthleteAnalytics';
 import AthleteMetricDetail from './components/athlete/AthleteMetricDetail';
@@ -92,7 +91,6 @@ function App() {
                   {/* Athlete Dashboard Routes */}
                   <Route element={<PrivateRoute><AthleteAppLayout><Outlet /></AthleteAppLayout></PrivateRoute>}>
                     <Route path="/athlete/home" element={<AthleteHome />} />
-                    <Route path="/athlete/calendar" element={<AthleteCalendar />} />
                     <Route path="/athlete/plan" element={<AthletePlanDetail />} />
                     <Route path="/athlete/analytics" element={<AthleteAnalytics />} />
                     <Route path="/athlete/analytics/:metricId" element={<AthleteMetricDetail />} />

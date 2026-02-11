@@ -1,12 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, BarChart2, MessageCircle, User, Calendar } from 'lucide-react';
+import { Home, BarChart2, MessageCircle, User } from 'lucide-react';
 
 export default function AthleteBottomNav() {
     const location = useLocation();
 
     const navItems = [
         { path: '/athlete/home', label: 'Home', icon: Home },
-        { path: '/athlete/calendar', label: 'Calendar', icon: Calendar },
         { path: '/athlete/analytics', label: 'Analytics', icon: BarChart2 },
         { path: '/athlete/chats', label: 'Chat', icon: MessageCircle },
         { path: '/athlete/profile', label: 'Profile', icon: User },
