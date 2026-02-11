@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 interface User {
   username: string;
@@ -15,7 +14,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   user: User | null;
   login: (username: string, password: string, role?: 'coach' | 'athlete') => Promise<void>;
-  logout: () => void;
+  logout: () => Promise<void>;
   updateUser: (userData: Partial<User>) => void;
   completeOnboarding: () => void;
 }
@@ -36,9 +35,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const logout = () => {
-    setIsAuthenticated(false);
-    setUser(null);
+  const logout = (): Promise<void> => {
+    return new Promise((resolve) => {
+      setIsAuthenticated(false);
+      setUser(null);
+      resolve();
+    });
   };
 
   const updateUser = (userData: Partial<User>) => {

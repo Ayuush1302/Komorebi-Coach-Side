@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Watch, Activity, ChevronRight } from 'lucide-react';
 
 export default function AthleteHome() {
+    const navigate = useNavigate();
     const [deviceConnected, setDeviceConnected] = useState(false);
 
     // Mock Data
@@ -39,7 +41,7 @@ export default function AthleteHome() {
                         </div>
                     </div>
                     <button
-                        onClick={() => setDeviceConnected(true)}
+                        onClick={() => navigate('/athlete/integrations')}
                         className="px-4 py-1.5 bg-white text-blue-600 text-sm font-medium rounded-lg hover:bg-blue-50 transition-colors"
                     >
                         Connect

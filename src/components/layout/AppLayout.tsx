@@ -11,10 +11,10 @@ interface AppLayoutProps {
 export default function AppLayout({ children }: AppLayoutProps) {
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
-  const { signOut } = useAuth();
+  const { logout } = useAuth();
 
-  const handleLogout = () => {
-    signOut();
+  const handleLogout = async () => {
+    await logout();
     navigate('/login');
   };
 
@@ -24,7 +24,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
       <header className="sticky top-0 bg-white border-b border-gray-200 z-40">
         <div className="max-w-screen-xl mx-auto px-4 h-16 flex items-center justify-between">
           <h1 className="text-xl font-semibold">Komorebi</h1>
-          
+
           <div className="relative">
             <button
               onClick={() => setShowMenu(!showMenu)}
@@ -37,11 +37,11 @@ export default function AppLayout({ children }: AppLayoutProps) {
             {showMenu && (
               <>
                 {/* Backdrop */}
-                <div 
+                <div
                   className="fixed inset-0 z-40"
                   onClick={() => setShowMenu(false)}
                 />
-                
+
                 {/* Menu */}
                 <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
                   <button
@@ -54,7 +54,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
                     <User className="w-5 h-5 text-gray-600" />
                     <span>Profile</span>
                   </button>
-                  
+
                   <button
                     onClick={() => {
                       navigate('/settings');
@@ -65,9 +65,9 @@ export default function AppLayout({ children }: AppLayoutProps) {
                     <Settings className="w-5 h-5 text-gray-600" />
                     <span>Settings</span>
                   </button>
-                  
+
                   <div className="my-1 border-t border-gray-200" />
-                  
+
                   <button
                     onClick={handleLogout}
                     className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-50 transition-colors text-left text-red-600"

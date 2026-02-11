@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { ArrowLeft, Send, MoreVertical } from 'lucide-react';
+import { ArrowLeft, Send, MoreVertical, Mic, Paperclip } from 'lucide-react';
 import { useChat } from '../../context/ChatContext';
 
 export default function ChatDetail() {
@@ -103,7 +103,15 @@ export default function ChatDetail() {
 
       {/* Message Input - Fixed at Bottom */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3" style={{ paddingBottom: '88px' }}>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
+          {/* Attach File Button */}
+          <button
+            className="w-10 h-10 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-colors flex items-center justify-center flex-shrink-0"
+            onClick={() => console.log('Attach file clicked')}
+          >
+            <Paperclip className="w-5 h-5" />
+          </button>
+
           <input
             type="text"
             value={message}
@@ -112,6 +120,16 @@ export default function ChatDetail() {
             placeholder="Type a message..."
             className="flex-1 px-4 py-3 bg-gray-50 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-colors"
           />
+
+          {/* Voice Chat Button */}
+          <button
+            className="w-10 h-10 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-colors flex items-center justify-center flex-shrink-0"
+            onClick={() => console.log('Voice chat clicked')}
+          >
+            <Mic className="w-5 h-5" />
+          </button>
+
+          {/* Send Button */}
           <button
             onClick={handleSendMessage}
             disabled={!message.trim()}

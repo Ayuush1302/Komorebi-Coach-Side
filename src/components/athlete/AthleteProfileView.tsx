@@ -1,6 +1,6 @@
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { User, Bell, Lock, Globe, LogOut, ChevronRight } from 'lucide-react';
+import { User, Bell, Lock, Globe, LogOut, ChevronRight, Watch } from 'lucide-react';
 
 export default function AthleteProfileView() {
     const { logout, user } = useAuth();
@@ -17,6 +17,7 @@ export default function AthleteProfileView() {
             items: [
                 { label: 'Edit Profile', icon: User, path: '/athlete/profile/edit' },
                 { label: 'Notifications', icon: Bell, path: '/athlete/profile/notifications' },
+                { label: 'Integrations', icon: Watch, path: '/athlete/integrations' },
                 { label: 'Language', icon: Globe, path: '/athlete/profile/language' },
             ],
         },
@@ -59,7 +60,7 @@ export default function AthleteProfileView() {
                                     <div key={item.label}>
                                         {index > 0 && <div className="border-t border-gray-50" />}
                                         <button
-                                            // onClick={() => navigate(item.path)} // Paths might not exist yet
+                                            onClick={() => navigate(item.path)}
                                             className="w-full p-4 flex items-center gap-3 hover:bg-gray-50 transition-colors text-left"
                                         >
                                             <div className="p-2 bg-gray-50 rounded-lg text-gray-600">

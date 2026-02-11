@@ -43,8 +43,13 @@ import { Toaster } from './components/ui/sonner';
 // Athlete Components
 import AthleteAppLayout from './components/layout/AthleteAppLayout';
 import AthleteHome from './components/athlete/AthleteHome';
+import AthleteCalendar from './components/athlete/AthleteCalendar';
+import AthletePlanDetail from './components/athlete/AthletePlanDetail';
 import AthleteAnalytics from './components/athlete/AthleteAnalytics';
+import AthleteMetricDetail from './components/athlete/AthleteMetricDetail';
 import AthleteProfileView from './components/athlete/AthleteProfileView';
+import DeviceIntegrations from './components/athlete/DeviceIntegrations';
+import DeviceDetail from './components/athlete/DeviceDetail';
 
 // Existing Components (reused)
 import Athletes from './components/athletes/Athletes';
@@ -87,10 +92,15 @@ function App() {
                   {/* Athlete Dashboard Routes */}
                   <Route element={<PrivateRoute><AthleteAppLayout><Outlet /></AthleteAppLayout></PrivateRoute>}>
                     <Route path="/athlete/home" element={<AthleteHome />} />
+                    <Route path="/athlete/calendar" element={<AthleteCalendar />} />
+                    <Route path="/athlete/plan" element={<AthletePlanDetail />} />
                     <Route path="/athlete/analytics" element={<AthleteAnalytics />} />
+                    <Route path="/athlete/analytics/:metricId" element={<AthleteMetricDetail />} />
                     <Route path="/athlete/chats" element={<Chats />} />
                     <Route path="/athlete/chats/:chatId" element={<ChatDetail />} />
                     <Route path="/athlete/profile" element={<AthleteProfileView />} />
+                    <Route path="/athlete/integrations" element={<DeviceIntegrations />} />
+                    <Route path="/athlete/integrations/:deviceId" element={<DeviceDetail />} />
                   </Route>
 
                   {/* Main App Routes with Global Layout */}
