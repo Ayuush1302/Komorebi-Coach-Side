@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { Mic, Square, Loader2 } from 'lucide-react';
 
 const AI_API_BASE_URL = import.meta.env.PROD
-    ? 'https://coach-ai-assistant.onrender.com'
+    ? 'https://komorebi-coach-side.onrender.com'
     : 'http://localhost:8000';
 
 interface AudioRecorderProps {
