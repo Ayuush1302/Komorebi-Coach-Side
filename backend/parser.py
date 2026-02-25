@@ -159,6 +159,13 @@ _NAME_STOPWORDS = {
 
 def _extract_athlete(text: str, doc) -> str | None:
     """Extract athlete name via NER then regex fallback."""
+    # Priority 0: Greeting pattern — "Hey Akash", "Hi John", "Hello Sarah"
+    m = re.match(r"^\s*(?:hey|hi|hello|yo)\s+([A-ZÀ-ÖØ-Ýa-zà-öø-ÿ]+)\b", text, re.IGNORECASE)
+    if m:
+        candidate = m.group(1)
+        if candidate.lower() not in _NAME_STOPWORDS:
+            return candidate.title()
+
     # Priority 1: "Name, ..." pattern (name before first comma)
     m = re.match(r"^\s*([A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ]+)\s*,", text)
     if m:
