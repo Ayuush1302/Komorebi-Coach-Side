@@ -125,6 +125,20 @@ _GAP_NAMES = {
     "Justin", "Ravi", "Ryan", "Neha", "Marcus", "Priya", "Sneha",
     "David", "Alex", "Sam", "Sarah", "John", "Mike", "Lisa",
     "Rahul", "Amit", "Emma", "James", "Maria",
+    # Name Pattern dataset names
+    "Aarav", "Abhishek", "Aditi", "Aditya", "Akash", "Amelia",
+    "Ananya", "Anjali", "Ankit", "Arjun", "Ashok", "Ava", "Ben",
+    "Brandon", "Charlotte", "Chloe", "Chris", "Daniel", "Deepika",
+    "Divya", "Ella", "Emily", "Eric", "Gaurav", "Grace", "Hannah",
+    "Harish", "Harsha", "Isabella", "Ishaan", "Ishita", "Jake",
+    "Jyoti", "Kabir", "Karan", "Kavya", "Kevin", "Kritika", "Kyle",
+    "Lakshmi", "Laura", "Lucy", "Madison", "Manav", "Manish",
+    "Megha", "Mehul", "Mia", "Michael", "Nathan", "Naveen",
+    "Nicole", "Nikhil", "Nisha", "Olivia", "Pallavi", "Pankaj",
+    "Pooja", "Preeti", "Rajesh", "Rhea", "Ritu", "Robert", "Rohan",
+    "Rohit", "Sachin", "Sanjay", "Shreya", "Shruti", "Simran",
+    "Sofia", "Sonia", "Sophia", "Suresh", "Swati", "Tanvi", "Tom",
+    "Tyler", "Varun", "Vikram", "Vishal", "Vivek", "Zoe",
 }
 
 # Build a case-insensitive lookup
@@ -353,6 +367,16 @@ if __name__ == "__main__":
         all_data.extend(gap_data)
     else:
         print("Warning: Gap-filling dataset not found, skipping.")
+
+    # ── Source 3: Name Pattern CSV dataset ──
+    name_pattern_file = "data/Name Pattern.csv"
+    if os.path.exists(name_pattern_file):
+        print(f"Processing CSV: {name_pattern_file}...")
+        np_data = process_csv(name_pattern_file)
+        print(f"  → {len(np_data)} examples from Name Pattern dataset")
+        all_data.extend(np_data)
+    else:
+        print("Warning: Name Pattern dataset not found, skipping.")
 
     print(f"\nTotal combined training examples: {len(all_data)}")
 
