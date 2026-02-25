@@ -119,6 +119,7 @@ function App() {
                     <Route path="/athletes" element={<Athletes />} />
                     <Route path="/athletes/:athleteId/dashboard" element={<AthleteDashboard />} />
                     <Route path="/athletes/:athleteId/ai-workout" element={<AIWorkoutAssistant />} />
+                    <Route path="/ai-workout" element={<AIWorkoutAssistant />} />
 
                     <Route path="/create/exercise" element={<CreateExercise />} />
                     <Route path="/create/workout" element={<WorkoutBuilder />} />

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, MessageCircle, Users, Calendar, Activity } from 'lucide-react';
+import { LayoutDashboard, MessageCircle, Users, Calendar, Activity, Zap } from 'lucide-react';
 
 export default function BottomNav() {
   const location = useLocation();
@@ -9,6 +9,7 @@ export default function BottomNav() {
     { path: '/activity', label: 'Activity', icon: Activity },
     { path: '/calendar', label: 'Calendar', icon: Calendar },
     { path: '/athletes', label: 'Athletes', icon: Users },
+    { path: '/ai-workout', label: 'AI', icon: Zap },
     { path: '/chats', label: 'Chat', icon: MessageCircle },
   ];
 

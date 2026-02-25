@@ -51,7 +51,7 @@ export default function AIWorkoutAssistant() {
             {/* Header */}
             <div className="flex items-center gap-4 mb-8">
                 <button
-                    onClick={() => navigate(`/athletes/${athleteId}/dashboard`)}
+                    onClick={() => athleteId ? navigate(`/athletes/${athleteId}/dashboard`) : navigate(-1)}
                     className="p-2 hover:bg-gray-100 rounded-md transition-colors"
                 >
                     <ArrowLeft className="w-5 h-5" />
