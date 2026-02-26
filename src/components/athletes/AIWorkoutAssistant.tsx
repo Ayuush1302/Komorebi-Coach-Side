@@ -46,6 +46,13 @@ export default function AIWorkoutAssistant() {
         }
     };
 
+    const handleAttributeChange = (assignmentIdx: number, attrIdx: number, newValue: string) => {
+        if (!workoutData || !workoutData.assignments) return;
+        const updatedData = { ...workoutData };
+        updatedData.assignments[assignmentIdx].attributes[attrIdx].value = newValue;
+        setWorkoutData(updatedData);
+    };
+
     return (
         <div className="max-w-7xl mx-auto">
             {/* Header */}
@@ -183,21 +190,33 @@ export default function AIWorkoutAssistant() {
                                         {assignment.attributes.map((attr: any, attrIdx: number) => (
                                             <tr key={attrIdx} className="hover:bg-gray-50/50 transition-colors">
                                                 <td className="px-6 py-3 font-medium text-gray-700">{attr.key}</td>
-                                                <td className="px-6 py-3 text-gray-900">
+                                                <td className="px-6 py-2 text-gray-900">
                                                     {attr.key === 'Activity' ? (
-                                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                                            {attr.value}
-                                                        </span>
+                                                        <input
+                                                            type="text"
+                                                            value={attr.value}
+                                                            onChange={(e) => handleAttributeChange(idx, attrIdx, e.target.value)}
+                                                            className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-transparent hover:border-blue-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all w-full max-w-[140px]"
+                                                        />
                                                     ) : attr.key === 'Intensity' ? (
-                                                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${attr.value === 'Easy' ? 'bg-green-100 text-green-800' :
-                                                            attr.value === 'Moderate' ? 'bg-yellow-100 text-yellow-800' :
-                                                                attr.value === 'Hard' ? 'bg-red-100 text-red-800' :
-                                                                    'bg-gray-100 text-gray-800'
-                                                            }`}>
-                                                            {attr.value}
-                                                        </span>
+                                                        <input
+                                                            type="text"
+                                                            value={attr.value}
+                                                            onChange={(e) => handleAttributeChange(idx, attrIdx, e.target.value)}
+                                                            className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${attr.value.toLowerCase() === 'easy' ? 'bg-green-100 text-green-800 border-transparent hover:border-green-300 focus:ring-green-200' :
+                                                                attr.value.toLowerCase() === 'moderate' ? 'bg-yellow-100 text-yellow-800 border-transparent hover:border-yellow-300 focus:ring-yellow-200' :
+                                                                    attr.value.toLowerCase() === 'hard' ? 'bg-red-100 text-red-800 border-transparent hover:border-red-300 focus:ring-red-200' :
+                                                                        'bg-gray-100 text-gray-800 border-transparent hover:border-gray-300 focus:ring-gray-200'
+                                                                } focus:outline-none focus:ring-2 transition-all w-full max-w-[120px]`}
+                                                        />
                                                     ) : (
-                                                        attr.value
+                                                        <input
+                                                            type="text"
+                                                            value={attr.value}
+                                                            onChange={(e) => handleAttributeChange(idx, attrIdx, e.target.value)}
+                                                            className="w-full bg-transparent border border-transparent hover:border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded px-2 py-1 -ml-2 transition-colors focus:outline-none focus:bg-white"
+                                                            placeholder={`Enter ${attr.key.toLowerCase()}`}
+                                                        />
                                                     )}
                                                 </td>
                                             </tr>
